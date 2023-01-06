@@ -4,15 +4,6 @@
 #include<conio.h>//to work with the console
 #include<stdlib.h>//standard library
 
-/*int check(char position[], char floor) {
-    int i;
-    for (i=0;i<7;i++)
-    {
-        if (floor==position[i])
-            return 1;
-    }
-    return 0;
-}*/
 
 /*int check(char *position,  char floor)     ***just garbage***
 {
@@ -24,7 +15,7 @@
   return 0;
 }*/
 
-int Check(char firfloor, int num){
+int Check(char firfloor, int num){    //checking floors
     int floor;
     char inNum;
     switch(firfloor){
@@ -46,6 +37,10 @@ int Check(char firfloor, int num){
                 break;
             }
             break;
+        
+        case 'G':
+            floor = 0;
+            break;
         case '1': 
             floor = 1;
             break;
@@ -60,9 +55,6 @@ int Check(char firfloor, int num){
             break;
         case '5':
             floor = 5;
-            break;
-        case 'G':
-            floor = 0;
             break;
         case 'x':
             floor=num;
@@ -90,27 +82,35 @@ int main(void){
         printf(".");
         sleep(1);  //perfect
         printf("\nthe doors are opening, be careful");
-        printf("\nyou are on the %s floor", firfloor);
-        printf("\nplease enter the floor:");
-        scanf("%c", &firfloor);
-        floor = Check(firfloor, num); //checking
-            if(floor == -10){
-                printf("please write the correct floor.\n");
-            }
-            else if(num == floor && firfloor !='x'){
-                printf("You are already here!\n");
-            }
-            else{
-                num=floor;
-            } 
-                printf("You are currently on the %d. floor.\n", num);
-    }
-        //int l = check(position,floor);
+        while(firfloor!='o'){
+            printf("\nyou are on the %c floor", firfloor);
+            printf("\nplease enter the floor:");
+            scanf(" %c", &firfloor);
         
+            floor = Check(firfloor, num); //checking
+                if(floor == -10){
+                    printf("please write the correct floor.\n");
+                }
+                else if(num == floor && firfloor !='x'){
+                    printf("You are already here!\n");
+                }
+                else{
+                    num=floor;
+                }
+                    printf("\nthe doors are closing be careful");
+                    printf("\nwait please");
+                    printf(".");
+                    sleep(1);  //we need to wait
+                    printf(".");
+                    sleep(1);  //more wait
+                    printf(".");
+                    sleep(1);  //perfect... im tired boss 
+                    printf("You are currently on the %d. floor.\n", num);
+        }
+    }   
     else if (ch=='n'){
         printf("bye");
     }
     else
         printf("wi dont understand");
-    return 0;
 }
