@@ -90,13 +90,24 @@ int main(void){
         printf(".");
         //sleep(1);
         printf("\nthe doors are opening, be careful");
-        printf("\nyou are on the %s floor", floor);
+        printf("\nyou are on the %s floor", firfloor);
         printf("\nplease enter the floor:");
         scanf("%s", &floor);
+        floor = Check(firfloor, num); //checking
+            if(floor == -10){
+            printf("You can't go there, type in an existing floor.\n");
+            }
+            else if(num == floor && (firfloor !='p' && firfloor !='y')){
+            printf("You are already there!\n");
+            }
+            else
+        {
+            num=floor;//we made it to the desired floor
+        } 
+            printf("You are currently on the %d. floor.\n", num);
+    }
         //int l = check(position,floor);
         
-
-    }
     else if (ch=='n'){
         printf("bye");
     }
