@@ -64,7 +64,7 @@ int Check(char firfloor, int num){
         case 'G':
             floor = 0;
             break;
-        case 'y':
+        case 'x':
             floor=num;
             break;
         default:
@@ -84,27 +84,26 @@ int main(void){
     if (ch=='y'){
         printf("wait please.");
         printf(".");
-        //sleep(1);
+        sleep(1);  //we need to wait
         printf(".");
-        //sleep(1);
+        sleep(1);  //more wait
         printf(".");
-        //sleep(1);
+        sleep(1);  //perfect
         printf("\nthe doors are opening, be careful");
         printf("\nyou are on the %s floor", firfloor);
         printf("\nplease enter the floor:");
-        scanf("%s", &floor);
+        scanf("%c", &firfloor);
         floor = Check(firfloor, num); //checking
             if(floor == -10){
-            printf("You can't go there, type in an existing floor.\n");
+                printf("please write the correct floor.\n");
             }
-            else if(num == floor && (firfloor !='p' && firfloor !='y')){
-            printf("You are already there!\n");
+            else if(num == floor && firfloor !='x'){
+                printf("You are already here!\n");
             }
-            else
-        {
-            num=floor;//we made it to the desired floor
-        } 
-            printf("You are currently on the %d. floor.\n", num);
+            else{
+                num=floor;
+            } 
+                printf("You are currently on the %d. floor.\n", num);
     }
         //int l = check(position,floor);
         
@@ -113,5 +112,5 @@ int main(void){
     }
     else
         printf("wi dont understand");
-
+    return 0;
 }
