@@ -79,7 +79,6 @@ int main(void){
     int floor;
     int num = 0; 
     char ch;
-    char floor;
     printf("Should I call the elevator? y/n: ");
     scanf("%c", &ch);
     if (ch=='y'){
