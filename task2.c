@@ -8,8 +8,22 @@
 int main (){
     const char *words[7] = {"artur","beautiful","cringe","boss","david","perfect","joker"}; // pack of words
     srand(time (NULL));//to get a new set of numbers every time you start
-    int wordind = rand() % 7;
-    int wordlen = strlen(words[wordind])
+    int wordInd = rand() % 7;
+    int wordLen = strlen(words[wordInd]);
+    char guess[wordLen + 1];
+
+
+    printf("\n***Hangman Game***");   //just a little design
+    printf("\n     ______     ");
+    printf("\n     |    ||    ");
+    printf("\n     |    ||    ");
+    printf("\n     O    ||    ");
+    printf("\n          ||    ");
+    printf("\n          ||    ");
+    printf("\n----------------");
+    printf("\n----------------");
+
+
 
 
 }
