@@ -15,7 +15,7 @@
   return 0;
 }*/
 
-int Check(char firfloor, int num){    //checking floors
+int сheck(char firfloor, int num){    //checking floors
     char inNum;
     int floor;
     switch(firfloor){
@@ -84,7 +84,7 @@ int main(void){
             printf("\nplease enter the floor:");
             scanf(" %c", &firfloor);
         
-            floor = Check(firfloor, num); //checking
+            floor = сheck(firfloor, num); //checking
             if(floor == -7){
                 printf("\nplease write the correct floor.");
             }
