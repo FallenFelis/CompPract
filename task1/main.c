@@ -16,8 +16,8 @@
 }*/
 
 int Check(char firfloor, int num){    //checking floors
-    int floor;
     char inNum;
+    int floor;
     switch(firfloor){
         case 'B': 
             scanf(" %c", &inNum);
@@ -33,7 +33,7 @@ int Check(char firfloor, int num){    //checking floors
                 floor = -3;
                 break;
             default:
-                floor = -10;
+                floor = -7;
                 break;
             }
             break;
@@ -56,11 +56,8 @@ int Check(char firfloor, int num){    //checking floors
         case '5':
             floor = 5;
             break;
-        case 'x':
-            floor=num;
-            break;
         default:
-            floor = -10;
+            floor = -7;
         break;
     }
     return floor;
@@ -82,35 +79,38 @@ int main(void){
         printf(".");
         sleep(1);  //perfect
         printf("\nthe doors are opening, be careful");
+        printf("\nyou are on the %c floor", firfloor);
         while(firfloor!='o'){
-            printf("\nyou are on the %c floor", firfloor);
             printf("\nplease enter the floor:");
             scanf(" %c", &firfloor);
         
             floor = Check(firfloor, num); //checking
-                if(floor == -10){
-                    printf("please write the correct floor.\n");
-                }
-                else if(num == floor && firfloor !='x'){
-                    printf("You are already here!\n");
-                }
-                else{
-                    num=floor;
-                }
-                    printf("\nthe doors are closing be careful");
-                    printf("\nwait please");
-                    printf(".");
-                    sleep(1);  //we need to wait
-                    printf(".");
-                    sleep(1);  //more wait
-                    printf(".");
-                    sleep(1);  //perfect... im tired boss 
-                    printf("You are currently on the %d. floor.\n", num);
+            if(floor == -7){
+                printf("\nplease write the correct floor.");
+            }
+            else if(num == floor){
+                printf("\nYou are already here!");
+            }
+            else{
+                num=floor;
+            }
+            printf("\nthe doors are closing be careful");
+            printf("\nwait please");
+            printf(".");
+            sleep(1);  //we need to wait
+            printf(".");
+            sleep(1);  //more wait
+            printf(".");
+            sleep(1);  //perfect... im tired boss
+            printf("\nthe doors are opening, be careful"); 
+            printf("\nYou are currently on the %d. floor.", num);
         }
+        
     }   
     else if (ch=='n'){
         printf("bye");
     }
     else
         printf("wi dont understand");
+    return 0;
 }
