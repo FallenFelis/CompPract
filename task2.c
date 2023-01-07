@@ -5,7 +5,7 @@
 #include<stdlib.h>//standard library
 
 
-void pic(int nMaxTries) // could have been done better
+void pic(int nMaxTries) //for what...
 {
     switch (nMaxTries)
     {
@@ -93,9 +93,12 @@ int main (){
     srand(time (NULL));//to get a new set of numbers every time you start
     int wordInd = rand() % 7;
     int wordLen = strlen(words[wordInd]);
+    char *chWord = words[rand() % wordInd];
     char guess[wordLen + 1];
-    int nMaxTries;
+    char mGuess;
+    int nMaxTries = 0;
     int i;
+    int ans = 0;
 
     printf("***Hangman Game***\n");   //just a little design
     printf("     ______     \n");
@@ -107,12 +110,27 @@ int main (){
     printf("----------------\n");
     printf("----------------\n");
 
-    for (i = 0; i < wordLen; i++) {
+    for (i = 0; i < wordLen; i++){
         guess[i] = '_';
     }
     while(nMaxTries < 6){
-        
+        printf("word for you: %s\n", guess);
+        printf("enter your letter: ");
+        scanf(" %c", &guess);
+        for (i = 0; i < wordLen; i++){
+            if (chWord[i] == mGuess) 
+                guess[i] = mGuess;
+                ans = 1;
+
+        }
+        if(ans==1)
+            printf("Cool! go again!");
+        else
+            printf("Nope.");
+            nMaxTries++;
+        pic(nMaxTries);
     }
+    
 
 
 }
