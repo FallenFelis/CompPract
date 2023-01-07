@@ -113,18 +113,19 @@ int main (){
         guess[i] = '_';
     }
     while(nMaxTries < 6){ //game is starting
-        int ans = 0;
-        printf("word for you: %s\n", guess);
-        printf("enter your letter: ");
-        scanf(" %c", &mGuess);
+        printf("word for you: %s\n", guess);         //I dont understand why you dont working
+        printf("enter your letter: ");               //and what you want
+        scanf(" %c", &mGuess);                       //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        int ans = 0;                                 //im tired boss
         for (int i = 0; i < wordLen; i++){
-            if (chWord[i] == mGuess) 
+            if (chWord[i] == mGuess){
                 guess[i] = mGuess;
                 ans = 1;
-
+            }
         }
-        if(ans==1)  //correct answer or not
+        if(ans){  //correct answer or not
             printf("Cool! go again!");
+        }
         else
             printf("Nope.");
             nMaxTries++;

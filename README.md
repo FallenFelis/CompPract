@@ -1,2 +1,0 @@
-# CompPract
-Homework
