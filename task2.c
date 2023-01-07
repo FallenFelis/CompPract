@@ -4,6 +4,7 @@
 #include<conio.h>//to work with the console
 #include<stdlib.h>//standard library
 
+const char *words[7] = {"artur","beautiful","cringe","boss","david","perfect","joker"}; // pack of words
 
 void pic(int nMaxTries) //for what...
 {
@@ -89,16 +90,14 @@ void pic(int nMaxTries) //for what...
 
 
 int main (){
-    const char *words[7] = {"artur","beautiful","cringe","boss","david","perfect","joker"}; // pack of words
+    
     srand(time (NULL));//to get a new set of numbers every time you start
-    int wordInd = rand() % 7;
-    int wordLen = strlen(words[wordInd]);
-    char *chWord = words[rand() % wordInd];
-    char guess[wordLen + 1];
+    int wordInd = rand() % 7; //index of the word
+    int wordLen = strlen(words[wordInd]); //length of the word
+    char *chWord = *words[rand() % wordInd]; //word
+    char guess[wordLen + 1]; 
     char mGuess;
     int nMaxTries = 0;
-    int i;
-    int ans = 0;
 
     printf("***Hangman Game***\n");   //just a little design
     printf("     ______     \n");
@@ -110,27 +109,39 @@ int main (){
     printf("----------------\n");
     printf("----------------\n");
 
-    for (i = 0; i < wordLen; i++){
+    for (int i = 0; i < wordLen; i++){
         guess[i] = '_';
     }
-    while(nMaxTries < 6){
+    while(nMaxTries < 6){ //game is starting
+        int ans = 0;
         printf("word for you: %s\n", guess);
         printf("enter your letter: ");
-        scanf(" %c", &guess);
-        for (i = 0; i < wordLen; i++){
+        scanf(" %c", &mGuess);
+        for (int i = 0; i < wordLen; i++){
             if (chWord[i] == mGuess) 
                 guess[i] = mGuess;
                 ans = 1;
 
         }
-        if(ans==1)
+        if(ans==1)  //correct answer or not
             printf("Cool! go again!");
         else
             printf("Nope.");
             nMaxTries++;
         pic(nMaxTries);
+        int check = 1; //checking the word
+        for (int i = 0; i < wordLen; i++) {
+            if (guess[i] == '_') {
+                check = 0;
+                break;
+        }
+        }
+        if (check==1) {
+            printf("You win!!! The word was %s.\n", chWord);
+            break;
+        }
     }
     
 
-
+    return 0;
 }
