@@ -67,7 +67,7 @@ int main(void){
     char firfloor = 'G'; //first floor
     int floor;
     int num = 0; 
-    char ch;
+    char ch; //just ask, want elevator or not
     printf("Should I call the elevator? y/n: ");
     scanf("%c", &ch);
     if (ch=='y'){
@@ -88,7 +88,7 @@ int main(void){
             if(floor == -7){
                 printf("\nplease write the correct floor.");
             }
-            else if(num == floor){
+            else if(num == floor){  //if 
                 printf("\nYou are already here!");
             }
             else{
