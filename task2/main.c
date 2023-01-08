@@ -80,7 +80,7 @@ void pic(int nMaxTries) //for what...
             printf("\n----------------");
             break;
         default:
-            printf("\nbye! T_T");
+            printf("\nhmmm...");
             break;
     }
 }
@@ -99,6 +99,7 @@ int main (){
     //char secGuess[wordLen];
     int nMaxTries = 0; //number of max attempts
     int nMaxMis = 6; //number of max mistakes
+    int i;
 
     printf("***Hangman Game***\n");   //just a little design
     printf("     ______     \n");
@@ -111,7 +112,7 @@ int main (){
     printf("----------------\n");
 
 
-    for (int i = 0; i < wordLen; i++){
+    for (i = 0; i < wordLen; i++){
         guess[i] = '_';
     }
     while(nMaxTries < nMaxMis){ //game is starting
@@ -119,9 +120,9 @@ int main (){
         printf("\nenter your letter: ");                                               
         scanf(" %c", &firGuess);                                                         
         int ans = 0;                                                                   
-        for (int i = 0; i < wordLen; i++){  //checking correct answer or not
+        for (i = 0; i < wordLen; i++){  //checking correct answer or not
             if (chWord[i] == firGuess){
-                guess[i] = firGuess;
+                guess[i] = firGuess;     //im tired boss
                 ans = 1;
             }
         }
@@ -134,8 +135,8 @@ int main (){
         }
         pic(nMaxTries);
         int check = 1; //checking the word
-        for (int i = 0; i < wordLen; i++) {
-            if (guess[i] == '_') {
+        for (i = 0; i < wordLen; i++) {
+            if (guess[i] == '_') {          //T_T
                 check = 0;
                 break;
         }
@@ -151,4 +152,4 @@ int main (){
     
 
     return 0;
-}
+}    //its working!!!!! WOOOHOOO
