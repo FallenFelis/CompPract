@@ -14,74 +14,73 @@ void pic(int nMaxTries) //for what...
 
         break;
         case 1:
-            printf("     ______     \n");
-            printf("     |    ||    \n");
-            printf("     |    ||    \n");
-            printf("     O    ||    \n");
-            printf("          ||    \n");
-            printf("          ||    \n");
-            printf("          ||    \n");
-            printf("----------------\n");
-            printf("----------------\n");
+            printf("\n     ______     ");
+            printf("\n     |    ||    ");
+            printf("\n     |    ||    ");
+            printf("\n     O    ||    ");
+            printf("\n          ||    ");
+            printf("\n          ||    ");
+            printf("\n          ||    ");
+            printf("\n----------------");
+            printf("\n----------------");
             break;
         case 2:
-            printf("     ______     \n");
-            printf("     |    ||    \n");
-            printf("     |    ||    \n");
-            printf("     O    ||    \n");
-            printf("    /     ||    \n");
-            printf("          ||    \n");
-            printf("          ||    \n");
-            printf("----------------\n");
-            printf("----------------\n");
+            printf("\n     ______     ");
+            printf("\n     |    ||    ");
+            printf("\n     |    ||    ");
+            printf("\n     O    ||    ");
+            printf("\n    /     ||    ");
+            printf("\n          ||    ");
+            printf("\n          ||    ");
+            printf("\n----------------");
+            printf("\n----------------");
             break;
         case 3:
-            printf("     ______     \n");
-            printf("     |    ||    \n");
-            printf("     |    ||    \n");
-            printf("     O    ||    \n");
-            printf("    / \\  ||    \n");
-            printf("          ||    \n");
-            printf("          ||    \n");
-            printf("----------------\n");
-            printf("----------------\n");
+            printf("\n     ______     ");
+            printf("\n     |    ||    ");
+            printf("\n     |    ||    ");
+            printf("\n     O    ||    ");
+            printf("\n    / \\   ||    ");
+            printf("\n          ||    ");
+            printf("\n          ||    ");
+            printf("\n----------------");
+            printf("\n----------------");
             break;
         case 4:
-            printf("     ______     \n");
-            printf("     |    ||    \n");
-            printf("     |    ||    \n");
-            printf("     O    ||    \n");
-            printf("    /|\\  ||    \n");
-            printf("          ||    \n");
-            printf("          ||    \n");
-            printf("----------------\n");
-            printf("----------------\n");
+            printf("\n     ______     ");
+            printf("\n     |    ||    ");
+            printf("\n     |    ||    ");
+            printf("\n     O    ||    ");
+            printf("\n    /|\\   ||    ");
+            printf("\n          ||    ");
+            printf("\n          ||    ");
+            printf("\n----------------");
+            printf("\n----------------");
             break;
         case 5:
-            printf("     ______     \n");
-            printf("     |    ||    \n");
-            printf("     |    ||    \n");
-            printf("     O    ||    \n");
-            printf("    /|\\  ||    \n");
-            printf("    /     ||    \n");
-            printf("          ||    \n");
-            printf("----------------\n");
-            printf("----------------\n");
-            printf("----------------\n");
+            printf("\n     ______     ");
+            printf("\n     |    ||    ");
+            printf("\n     |    ||    ");
+            printf("\n     O    ||    ");
+            printf("\n    /|\\   ||    ");
+            printf("\n    /     ||    ");
+            printf("\n          ||    ");
+            printf("\n----------------");
+            printf("\n----------------");
             break;
         case 6:
-            printf("     ______     \n");
-            printf("     |    ||    \n");
-            printf("     |    ||    \n");
-            printf("     O    ||    \n");
-            printf("    /|\\  ||    \n");
-            printf("    / \\  ||    \n");
-            printf("          ||    \n");
-            printf("----------------\n");
-            printf("----------------\n");
+            printf("\n     ______     ");
+            printf("\n     |    ||    ");
+            printf("\n     |    ||    ");
+            printf("\n     O    ||    ");
+            printf("\n    /|\\   ||    ");
+            printf("\n    / \\   ||    ");
+            printf("\n          ||    ");
+            printf("\n----------------");
+            printf("\n----------------");
             break;
         default:
-            printf("bye! T_T\n");
+            printf("\nbye! T_T");
             break;
     }
 }
@@ -92,12 +91,14 @@ void pic(int nMaxTries) //for what...
 int main (){
     
     srand(time (NULL));//to get a new set of numbers every time you start
-    int wordInd = rand() % 7; //index of the word
-    int wordLen = strlen(words[wordInd]); //length of the word
-    char *chWord = *words[rand() % wordInd]; //word
-    char guess[wordLen + 1]; 
-    char mGuess;
-    int nMaxTries = 0;
+    int wordInd = rand() % 6; //index of the word
+    const char *chWord = words[wordInd]; //word
+    int wordLen = strlen(words[wordInd]);//length of the word
+    char guess[wordLen + 1];
+    char firGuess;
+    char secGuess[wordLen];
+    int nMaxTries = 0; //number of max attempts
+    int nMaxMis = 6; //number of max mistakes
 
     printf("***Hangman Game***\n");   //just a little design
     printf("     ______     \n");
@@ -109,26 +110,28 @@ int main (){
     printf("----------------\n");
     printf("----------------\n");
 
+
     for (int i = 0; i < wordLen; i++){
         guess[i] = '_';
     }
-    while(nMaxTries < 6){ //game is starting
-        printf("word for you: %s\n", guess);         //I dont understand why you dont working
-        printf("enter your letter: ");               //and what you want
-        scanf(" %c", &mGuess);                       //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        int ans = 0;                                 //im tired boss
-        for (int i = 0; i < wordLen; i++){
-            if (chWord[i] == mGuess){
-                guess[i] = mGuess;
+    while(nMaxTries < nMaxMis){ //game is starting
+        printf("Current word: %s\n", guess);                                                                                
+        printf("\nenter your letter: ");                                               
+        scanf(" %c", &firGuess);                                                         
+        int ans = 0;                                                                   
+        for (int i = 0; i < wordLen; i++){  //checking correct answer or not
+            if (chWord[i] == firGuess){
+                guess[i] = firGuess;
                 ans = 1;
             }
         }
         if(ans){  //correct answer or not
-            printf("Cool! go again!");
+            printf("\nCool! go again!");
         }
-        else
-            printf("Nope.");
+        else{
+            printf("\nNope.");
             nMaxTries++;
+        }
         pic(nMaxTries);
         int check = 1; //checking the word
         for (int i = 0; i < wordLen; i++) {
@@ -137,10 +140,13 @@ int main (){
                 break;
         }
         }
-        if (check==1) {
-            printf("You win!!! The word was %s.\n", chWord);
+        if (check) {
+            printf("\nYou win!!! The word was %s.", chWord);
             break;
         }
+    }
+    if(nMaxTries==nMaxMis){
+        printf("\nYou lose!!! The word was %s.", chWord);
     }
     
 
