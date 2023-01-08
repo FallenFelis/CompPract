@@ -93,10 +93,10 @@ int main (){
     srand(time (NULL));//to get a new set of numbers every time you start
     int wordInd = rand() % 6; //index of the word
     const char *chWord = words[wordInd]; //word
-    int wordLen = strlen(words[wordInd]);//length of the word
+    int wordLen = strlen(chWord);//length of the word
     char guess[wordLen + 1];
     char firGuess;
-    char secGuess[wordLen];
+    //char secGuess[wordLen];
     int nMaxTries = 0; //number of max attempts
     int nMaxMis = 6; //number of max mistakes
 
@@ -115,7 +115,7 @@ int main (){
         guess[i] = '_';
     }
     while(nMaxTries < nMaxMis){ //game is starting
-        printf("Current word: %s\n", guess);                                                                                
+        printf("\nCurrent word: %s", guess);                                                                                
         printf("\nenter your letter: ");                                               
         scanf(" %c", &firGuess);                                                         
         int ans = 0;                                                                   
